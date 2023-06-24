@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class LevelChangeButton : Button
 {
-    int CurLevel;
+    public int CurLevel;
 
-    public override void ClickButton() 
+    public override void ClickButton()
     {
-        SceneManager.LoadScene("Scene" + (CurLevel + 1));
+        if(tag == "InGame")
+            SceneManager.LoadScene("InGameScene" + CurLevel);
+        else
+            SceneManager.LoadScene("Scene" + (CurLevel + 1));
+
     }
 }

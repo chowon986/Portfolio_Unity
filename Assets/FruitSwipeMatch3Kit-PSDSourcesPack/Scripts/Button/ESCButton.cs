@@ -18,14 +18,16 @@ public class ESCButton : Button
             child.gameObject.SetActive(false);
         }
 
-        musicButton.isMute = musicToggleButton.isMute;
-        soundButton.isMute = soundToggleButton.isMute;
+        if (musicToggleButton != null)
+        {
+            musicButton.isMute = musicToggleButton.isMute;
+            soundButton.isMute = soundToggleButton.isMute;
 
-        musicButton.gameObject.SetActive(!musicButton.isMute);
-        soundButton.gameObject.SetActive(!soundButton.isMute);
-        
-        button.gameObject.SetActive(button.isOn);
-        button.isOn = !button.isOn;
+            musicButton.gameObject.SetActive(!musicButton.isMute);
+            soundButton.gameObject.SetActive(!soundButton.isMute);
+
+            button.gameObject.SetActive(button.isOn);
+            button.isOn = !button.isOn;
+        }
     }
-
 }
