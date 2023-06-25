@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FruitSwipeMatch3Kit-PSDSourcesPack/Scenes/Scene1.unity
     guid: e4e7003349111004ba9144e06e395eca
+  - enabled: 1
+    path: Assets/FruitSwipeMatch3Kit-PSDSourcesPack/Scenes/InGameScene1.unity
+    guid: bedc33c12900db0449569b47fb0b27cf
   m_configObjects: {}
