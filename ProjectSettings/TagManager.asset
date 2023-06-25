@@ -8,6 +8,12 @@ TagManager:
   - PinkButton
   - BlueButton
   - InGame
+  - Banana
+  - Blueberry
+  - Grape
+  - Pear
+  - Strawberry
+  - Tangerine
   layers:
   - Default
   - TransparentFX
