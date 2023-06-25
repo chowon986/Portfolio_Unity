@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\FruitSwipeMatch3Kit-PSDSourcesPack\Scripts\Board\BackgroundTile.cs" />
+    <Compile Include="Assets\FruitSwipeMatch3Kit-PSDSourcesPack\Scripts\Board\FindMatches.cs" />
     <Compile Include="Assets\FruitSwipeMatch3Kit-PSDSourcesPack\Scripts\Button\ColorButton.cs" />
     <Compile Include="Assets\FruitSwipeMatch3Kit-PSDSourcesPack\Scripts\Button\ESCButton.cs" />
     <Compile Include="Assets\FruitSwipeMatch3Kit-PSDSourcesPack\Scripts\Button\ResetButton.cs" />
