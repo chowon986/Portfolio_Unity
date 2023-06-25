@@ -45,32 +45,38 @@ public class Dot : MonoBehaviour
         }
         targetX = column;
         targetY = row;
-        if(Mathf.Abs(targetX - transform.position.x) > 0.05f)
+        if(Mathf.Abs(targetX - transform.position.x) > 0.1f)
         {
             //Move towards the target
             tempPosition = new Vector2(targetX, transform.position.y);
-            transform.position = Vector2.Lerp(transform.position, tempPosition, 0.1f);
+            transform.position = Vector2.Lerp(transform.position, tempPosition, 0.6f);
+            if (board.allDots[column, row] != this.gameObject)
+            {
+                board.allDots[column, row] = this.gameObject;
+            }
         }
         else
         {
             //Directly Set the Position
             tempPosition = new Vector2(targetX, transform.position.y);
             transform.position = tempPosition;
-            board.allDots[column, row] = this.gameObject;
         }
 
-        if (Mathf.Abs(targetY - transform.position.y) > 0.05f)
+        if (Mathf.Abs(targetY - transform.position.y) > 0.1f)
         {
             //Move towards the target
             tempPosition = new Vector2(transform.position.x, targetY);
-            transform.position = Vector2.Lerp(transform.position, tempPosition, 0.1f);
+            transform.position = Vector2.Lerp(transform.position, tempPosition, 0.6f);
+            if (board.allDots[column, row] != this.gameObject)
+            {
+                board.allDots[column, row] = this.gameObject;
+            }
         }
         else
         {
             //Directly Set the Position
             tempPosition = new Vector2(transform.position.x, targetY);
             transform.position = tempPosition;
-            board.allDots[column, row] = this.gameObject;
         }
     }
 
