@@ -57,7 +57,7 @@ public class FindMatches : MonoBehaviour
 
                                 if (leftDot.GetComponent<Dot>().isColumnBomb)
                                 {
-                                    currentMatches.Union(GetColumnPieces(i-1));
+                                    currentMatches.Union(GetColumnPieces(i - 1));
                                 }
 
                                 if (rightDot.GetComponent<Dot>().isColumnBomb)
@@ -70,6 +70,7 @@ public class FindMatches : MonoBehaviour
                                     currentMatches.Add(leftDot);
                                 }
                                 leftDot.GetComponent<Dot>().isMatched = true;
+                                
                                 if (!currentMatches.Contains(rightDot))
                                 {
                                     currentMatches.Add(rightDot);
@@ -158,7 +159,7 @@ public class FindMatches : MonoBehaviour
     {
         List<GameObject> dots = new List<GameObject>();
 
-        for (int i = 0; i < board.height; i++)
+        for (int i = 0; i < board.width; i++)
         {
             if (board.allDots[i, row] != null)
             {
@@ -168,5 +169,37 @@ public class FindMatches : MonoBehaviour
         }
 
         return dots;
+    }
+
+    public void CheckBombs()
+    {
+        // Did the player move something?
+        if(board.currentDot != null)
+        {
+            // Is the piece they moved matched?
+            if(board.currentDot.isMatched)
+            {
+                // make it unmatched
+                board.currentDot.isMatched = false;
+
+                // Decide what kind of bomb to make
+                int typeOfBomb = Random.Range(0, 100);
+                if(typeOfBomb < 50)
+                {
+                    // Make a row Bomb
+                    board.currentDot.MakeRowBomb();
+                }   
+                else if(typeOfBomb >= 50)
+                {
+                    // Make a column Bomb
+                    board.currentDot.MakeColumnBomb();
+                }
+            }
+            // Is the other piece matched?
+            else if (board.currentDot.otherDot != null)
+            {
+
+            }
+        }
     }
 }

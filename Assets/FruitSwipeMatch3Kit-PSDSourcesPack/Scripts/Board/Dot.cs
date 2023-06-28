@@ -14,12 +14,12 @@ public class Dot : MonoBehaviour
     public int targetX;
     public int targetY;
     public bool isMatched = false;
+    public GameObject otherDot;
 
     private Board board;
     private Vector2 firstTouchPosition;
     private Vector2 finalTouchPosition;
     private Vector2 tempPosition;
-    private GameObject otherDot;
     private FindMatches findMatches;
 
     [Header("Swipe Stuff")]
@@ -53,9 +53,7 @@ public class Dot : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(1))
         {
-            //isColumnBomb = true;
             isRowBomb = true;
-            //GameObject arrow = Instantiate(columnArrow, transform.position, Quaternion.identity);
             GameObject arrow = Instantiate(rowArrow, transform.position, Quaternion.identity);
             arrow.transform.parent = this.transform;
         }
@@ -64,12 +62,12 @@ public class Dot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        FindMatched();
-        if (isMatched)
-        {
-            SpriteRenderer mySprite = GetComponent<SpriteRenderer>();
-            mySprite.color = new Color(1f, 1f, 1f, .2f);
-        }
+        //FindMatched();
+        //if (isMatched)
+        //{
+        //    SpriteRenderer mySprite = GetComponent<SpriteRenderer>();
+        //    mySprite.color = new Color(1f, 1f, 1f, .2f);
+        //}
         targetX = column;
         targetY = row;
         if(Mathf.Abs(targetX - transform.position.x) > 0.1f)
@@ -122,13 +120,14 @@ public class Dot : MonoBehaviour
                 row = previousRow;
                 column = previousColumn;
                 yield return new WaitForSeconds(.5f);
+                board.currentDot = null;
                 board.currentState = GameState.move;
             }
             else
             {
                 board.DestroyMatches();
             }
-            otherDot = null;
+            //otherDot = null;
         }
     }
 
@@ -157,6 +156,7 @@ public class Dot : MonoBehaviour
             swipeAngle = Mathf.Atan2(finalTouchPosition.y - firstTouchPosition.y, finalTouchPosition.x - firstTouchPosition.x) * 180 / Mathf.PI;
             MovePieces();
             board.currentState = GameState.wait;
+            board.currentDot = this;
         }
         else
         {
@@ -235,9 +235,23 @@ public class Dot : MonoBehaviour
                 {
                     upDot1.GetComponent<Dot>().isMatched = true;
                     downDot1.GetComponent<Dot>().isMatched = true;
-                    this.GetComponent<Dot>().isMatched = true;
+                    isMatched = true;
                 }
             }
         }
+    }
+
+    public void MakeRowBomb()
+    {
+        isRowBomb = true;
+        GameObject arrow = Instantiate(rowArrow, transform.position, Quaternion.identity);
+        arrow.transform.parent = this.transform;
+    }
+
+    public void MakeColumnBomb()
+    {
+        isColumnBomb = true;
+        GameObject arrow = Instantiate(columnArrow, transform.position, Quaternion.identity);
+        arrow.transform.parent = this.transform;
     }
 }
