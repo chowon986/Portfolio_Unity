@@ -53,7 +53,9 @@ public class Dot : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(1))
         {
+            //isColumnBomb = true;
             isRowBomb = true;
+            //GameObject arrow = Instantiate(columnArrow, transform.position, Quaternion.identity);
             GameObject arrow = Instantiate(rowArrow, transform.position, Quaternion.identity);
             arrow.transform.parent = this.transform;
         }
