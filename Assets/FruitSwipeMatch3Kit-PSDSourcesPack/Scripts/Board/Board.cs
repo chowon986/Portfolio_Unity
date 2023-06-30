@@ -109,15 +109,15 @@ public class Board : MonoBehaviour
     {
         if (allDots[column, row].GetComponent<Dot>().isMatched)
         {
-            GameObject particle = Instantiate(destroyEffect, allDots[column, row].transform.position, Quaternion.identity);
             // How many elements are in the matched pieces list from finadmatches?
             if(findeMatches.currentMatches.Count == 4 ||
                 findeMatches.currentMatches.Count == 7)
             {
                 findeMatches.CheckBombs();
             }
+            
+            GameObject particle = Instantiate(destroyEffect, allDots[column, row].transform.position, Quaternion.identity);
             Destroy(particle, .5f);
-            findeMatches.currentMatches.Remove(allDots[column, row]);
             Destroy(allDots[column, row]);
             allDots[column, row] = null;
         }
@@ -135,6 +135,8 @@ public class Board : MonoBehaviour
                 }
             }
         }
+
+        findeMatches.currentMatches.Clear();
         StartCoroutine(DecreaseRowCo());
     }
 
