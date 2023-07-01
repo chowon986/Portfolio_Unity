@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Search;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 using UnityEngine.UIElements;
 
 public class Dot : MonoBehaviour
@@ -272,5 +273,19 @@ public class Dot : MonoBehaviour
         isColumnBomb = true;
         GameObject arrow = Instantiate(columnArrow, transform.position, Quaternion.identity);
         arrow.transform.parent = this.transform;
+    }
+
+    public void MakeColorBomb()
+    {
+        isColorBomb = true;
+        GameObject color = Instantiate(colorBomb, transform.position, Quaternion.identity);
+        color.transform.parent = this.transform;
+    }
+
+    public void MakeAdjacentBomb()
+    {
+        isAdjacentBomb = true;
+        GameObject marker = Instantiate(adjacentMarker, transform.position, Quaternion.identity);
+        marker.transform.parent = this.transform;
     }
 }

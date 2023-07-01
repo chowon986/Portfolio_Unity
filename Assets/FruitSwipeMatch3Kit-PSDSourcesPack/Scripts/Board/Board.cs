@@ -105,15 +105,115 @@ public class Board : MonoBehaviour
         return false;
     }
 
+    private bool ColumnOrRow()
+    {
+        int numberHorizontal = 0;
+        int numberVertical = 0;
+
+        Dot firstPiece = findeMatches.currentMatches[0].GetComponent<Dot>();
+
+        if (firstPiece != null)
+        {
+            foreach (GameObject currentPiece in findeMatches.currentMatches)
+            {
+                Dot dot = currentPiece.GetComponent<Dot>();
+                if (dot.row == firstPiece.row)
+                {
+                    numberHorizontal++;
+                }
+                if(dot.column == firstPiece.column)
+                {
+                    numberVertical++;
+                }
+            } 
+        }
+
+        return (numberVertical == 5 || numberHorizontal == 5);
+    }
+
+    private void CheckToMakeBombs()
+    {
+        if(findeMatches.currentMatches.Count == 4 || findeMatches.currentMatches.Count == 7)
+        {
+            findeMatches.CheckBombs();
+        }
+
+        if(findeMatches.currentMatches.Count == 5 || findeMatches.currentMatches.Count == 8)
+        {
+            if(ColumnOrRow())
+            {
+                // Make a Color bomb
+                // is the current dot matched?
+                //Debug.Log("Make a color bomb");
+                if(currentDot != null)
+                {
+                    if(currentDot.isMatched)
+                    {
+                        if(!currentDot.isColorBomb)
+                        {
+                            currentDot.isMatched = false;
+                            currentDot.MakeColorBomb();
+                        }
+                    }
+                }
+                else
+                {
+                    if (currentDot.otherDot != null)
+                    {
+                        Dot otherDot = currentDot.otherDot.GetComponent<Dot>();
+                        if (otherDot.isMatched)
+                        {
+                            if (!otherDot.isColorBomb)
+                            {
+                                otherDot.isMatched = false;
+                                otherDot.MakeColorBomb();
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // Make a adjacent bomb
+                //Debug.Log("Make a adjacent bomb");
+                if (currentDot != null)
+                {
+                    if (currentDot.isMatched)
+                    {
+                        if (!currentDot.isAdjacentBomb)
+                        {
+                            currentDot.isMatched = false;
+                            currentDot.MakeAdjacentBomb();
+                        }
+                    }
+                }
+                else
+                {
+                    if (currentDot.otherDot != null)
+                    {
+                        Dot otherDot = currentDot.otherDot.GetComponent<Dot>();
+                        if (otherDot.isMatched)
+                        {
+                            if (!otherDot.isAdjacentBomb)
+                            {
+                                otherDot.isMatched = false;
+                                otherDot.MakeAdjacentBomb();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     private void DestroyMatchesAt(int column, int row)
     {
         if (allDots[column, row].GetComponent<Dot>().isMatched)
         {
             // How many elements are in the matched pieces list from finadmatches?
-            if(findeMatches.currentMatches.Count == 4 ||
-                findeMatches.currentMatches.Count == 7)
+            if(findeMatches.currentMatches.Count >= 4)
             {
-                findeMatches.CheckBombs();
+                CheckToMakeBombs();
             }
             
             GameObject particle = Instantiate(destroyEffect, allDots[column, row].transform.position, Quaternion.identity);
