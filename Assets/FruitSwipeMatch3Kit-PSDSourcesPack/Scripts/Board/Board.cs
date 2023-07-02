@@ -31,6 +31,7 @@ public class Board : MonoBehaviour
     public int height;
     public int offSet;
     public GameObject tilePrefab;
+    public GameObject breakableTilePrefab;
     public GameState currentState = GameState.move;
     public GameObject[] dots;
     public GameObject destroyEffect;
@@ -39,13 +40,15 @@ public class Board : MonoBehaviour
     public Dot currentDot;
     private bool[,] blankSpaces;
     private FindMatches findeMatches;
+    private BackgroundTile[,] breakableTile;
 
     // Start is called before the first frame update
     void Start()
     {
         findeMatches = FindObjectOfType<FindMatches>();
-        blankSpaces = new bool[width, height];
         allDots = new GameObject[width, height];
+        blankSpaces = new bool[width, height];
+        breakableTile = new BackgroundTile[width, height];
         Setup();
     }
 
@@ -60,9 +63,26 @@ public class Board : MonoBehaviour
         }
     }
 
+    public void GenerateBreakableTiles()
+    {       
+        // Look at all the tiles in the layout
+        for (int i = 0; i < boardLayout.Length; i++)
+        {            
+            // if a tile is a "Breakable" tile
+            if (boardLayout[i].tileKind == TileKind.Breakable)
+            {
+                // create a "Breakable" tile at that position
+                Vector2 tempPosition = new Vector2(boardLayout[i].x, boardLayout[i].y);
+                GameObject tile = Instantiate(breakableTilePrefab, tempPosition, Quaternion.identity);
+                breakableTile[boardLayout[i].x, boardLayout[i].y] = tile.GetComponent<BackgroundTile>();
+            }
+        }
+    }
+
     private void Setup()
     {
         GenerateBlankSpaces();
+        GenerateBreakableTiles();
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
@@ -257,6 +277,16 @@ public class Board : MonoBehaviour
             if (findeMatches.currentMatches.Count >= 4)
             {
                 CheckToMakeBombs();
+            }
+
+            // Does a tile need to break?
+            if (breakableTile[column, row] != null)
+            {
+                breakableTile[column, row].TakeDamage(1);
+                if (breakableTile[column, row].hitPoints <= 0)
+                {
+                    breakableTile[column, row] = null;
+                }
             }
 
             GameObject particle = Instantiate(destroyEffect, allDots[column, row].transform.position, Quaternion.identity);
