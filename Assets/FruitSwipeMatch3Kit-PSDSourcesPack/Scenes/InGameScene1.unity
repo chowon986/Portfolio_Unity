@@ -282,14 +282,14 @@ MonoBehaviour:
   - x: 0
     y: 0
     tileKind: 1
+  - x: 0
+    y: 9
+    tileKind: 1
   - x: 6
     y: 9
     tileKind: 1
   - x: 6
     y: 0
-    tileKind: 1
-  - x: 0
-    y: 9
     tileKind: 1
   currentDot: {fileID: 0}
 --- !u!4 &909288758
