@@ -41,6 +41,7 @@ public class Board : MonoBehaviour
     public GameObject[,] allDots;
     public Dot currentDot;
     public int basePieceValue = 20;
+    public float refillDelay = 0.5f;
     private bool[,] blankSpaces;
     private FindMatches findeMatches;
     private BackgroundTile[,] breakableTile;
@@ -373,7 +374,7 @@ public class Board : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(refillDelay * 0.5f);
         StartCoroutine(FillBoardCo());
     }
 
@@ -388,6 +389,14 @@ public class Board : MonoBehaviour
                 {
                     Vector2 tempPosition = new Vector2(i, j + offSet);
                     int dotToUse = Random.Range(0, dots.Length);
+                    int maxIterations = 0;
+                    while(MatchesAt(i,j, dots[dotToUse]) &&
+                        maxIterations < 100)
+                    {
+                        maxIterations++;
+                        dotToUse = Random.Range(0, dots.Length);
+                    }
+
                     GameObject piece = Instantiate(dots[dotToUse], tempPosition, Quaternion.identity);
                     allDots[i, j] = piece;
                     piece.GetComponent<Dot>().row = j;
@@ -418,17 +427,16 @@ public class Board : MonoBehaviour
     private IEnumerator FillBoardCo()
     {
         RefillBoard();
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(refillDelay);
 
         while (MatchesOnBoard())
         {
             streakValue++;
-            yield return new WaitForSeconds(.5f);
             DestroyMatches();
+            yield return new WaitForSeconds(2 * refillDelay);
         }
         findeMatches.currentMatches.Clear();
         currentDot = null;
-        yield return new WaitForSeconds(.5f);
 
         if (IsDeadlocked())
         {
@@ -533,8 +541,10 @@ public class Board : MonoBehaviour
         return true;
     }
 
-    private void ShuffleBoard()
+    private IEnumerator ShuffleBoard()
     {
+        yield return new WaitForSeconds(0.5f);
+
         // Create a list of game objects
         List<GameObject> newBoard = new List<GameObject>();
         for(int i = 0; i < width; i++)
@@ -547,6 +557,8 @@ public class Board : MonoBehaviour
                 }
             }
         }
+
+        yield return new WaitForSeconds(0.5f);
 
         // for every spot on the board
         for(int i = 0; i < width; i++)
