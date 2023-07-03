@@ -58,6 +58,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2021.3.17f1\2022.3.0f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\FruitSwipeMatch3Kit-PSDSourcesPack\Scripts\Board\ScoreManager.cs" />
     <Compile Include="Assets\FruitSwipeMatch3Kit-PSDSourcesPack\Scripts\Board\BackgroundTile.cs" />
     <Compile Include="Assets\FruitSwipeMatch3Kit-PSDSourcesPack\Scripts\Board\CameraScalar.cs" />
     <Compile Include="Assets\FruitSwipeMatch3Kit-PSDSourcesPack\Scripts\Board\FindMatches.cs" />

@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using Unity.VisualScripting;
 using UnityEditor.iOS.Xcode;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
@@ -39,9 +40,12 @@ public class Board : MonoBehaviour
     public TileType[] boardLayout;
     public GameObject[,] allDots;
     public Dot currentDot;
+    public int basePieceValue = 20;
     private bool[,] blankSpaces;
     private FindMatches findeMatches;
     private BackgroundTile[,] breakableTile;
+    private ScoreManager scoreManager;
+    private int streakValue = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +54,7 @@ public class Board : MonoBehaviour
         allDots = new GameObject[width, height];
         blankSpaces = new bool[width, height];
         breakableTile = new BackgroundTile[width, height];
+        scoreManager = FindObjectOfType<ScoreManager>();
         Setup();
     }
 
@@ -91,7 +96,8 @@ public class Board : MonoBehaviour
                 if (!blankSpaces[i, j])
                 {
                     Vector2 tempPosition = new Vector2(i, j + offSet);
-                    GameObject backgroundTile = Instantiate(tilePrefab, tempPosition, Quaternion.identity) as GameObject;
+                    Vector2 tilePosition = new Vector2(i, j);
+                    GameObject backgroundTile = Instantiate(tilePrefab, tilePosition, Quaternion.identity) as GameObject;
                     backgroundTile.transform.parent = this.transform;
                     backgroundTile.name = "( " + i + ", " + j + " )";
                     int dotToUse = Random.Range(0, dots.Length);
@@ -293,6 +299,7 @@ public class Board : MonoBehaviour
             GameObject particle = Instantiate(destroyEffect, allDots[column, row].transform.position, Quaternion.identity);
             Destroy(particle, .5f);
             Destroy(allDots[column, row]);
+            scoreManager.IncreaseScore(basePieceValue * streakValue);
             allDots[column, row] = null;
         }
     }
@@ -415,6 +422,7 @@ public class Board : MonoBehaviour
 
         while (MatchesOnBoard())
         {
+            streakValue++;
             yield return new WaitForSeconds(.5f);
             DestroyMatches();
         }
@@ -428,6 +436,7 @@ public class Board : MonoBehaviour
             Debug.Log("Deadlocked!!!");
         }
         currentState = GameState.move;
+        streakValue = 1;
     }
 
     private void SwitchPieces(int column, int row, Vector2 direction)
