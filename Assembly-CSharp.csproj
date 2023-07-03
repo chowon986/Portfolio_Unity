@@ -71,6 +71,7 @@
     <Compile Include="Assets\FruitSwipeMatch3Kit-PSDSourcesPack\Scripts\Board\Dot.cs" />
     <Compile Include="Assets\FruitSwipeMatch3Kit-PSDSourcesPack\Scripts\Button\LevelChangeButton.cs" />
     <Compile Include="Assets\FruitSwipeMatch3Kit-PSDSourcesPack\Scripts\Button\Button.cs" />
+    <Compile Include="Assets\FruitSwipeMatch3Kit-PSDSourcesPack\Scripts\Board\HintManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

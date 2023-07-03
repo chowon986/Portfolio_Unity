@@ -22,6 +22,7 @@ public class Dot : MonoBehaviour
     private Vector2 finalTouchPosition;
     private Vector2 tempPosition;
     private FindMatches findMatches;
+    private HintManager hintManager;
 
     [Header("Swipe Stuff")]
     public float swipeAngle = 0; 
@@ -47,6 +48,7 @@ public class Dot : MonoBehaviour
 
         board = FindObjectOfType<Board>();
         findMatches = FindObjectOfType<FindMatches>();
+        hintManager = FindObjectOfType<HintManager>();
         //targetX = (int)transform.position.x;
         //targetY = (int)transform.position.y;
         //column = targetX;
@@ -153,7 +155,13 @@ public class Dot : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(board.currentState == GameState.move)
+        // Destroy the hint
+        if (hintManager != null)
+        {
+            hintManager.DestroyHint();
+        }
+
+        if (board.currentState == GameState.move)
         {
             firstTouchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
         }
