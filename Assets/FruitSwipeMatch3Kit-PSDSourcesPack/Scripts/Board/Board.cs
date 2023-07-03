@@ -440,7 +440,7 @@ public class Board : MonoBehaviour
 
         if (IsDeadlocked())
         {
-            ShuffleBoard();
+            StartCoroutine(ShuffleBoard());
             Debug.Log("Deadlocked!!!");
         }
         currentState = GameState.move;
@@ -603,7 +603,7 @@ public class Board : MonoBehaviour
         // Check if it's still deadlocked
         if(IsDeadlocked())
         {
-            ShuffleBoard();
+            StartCoroutine(ShuffleBoard());
         }
     }
 }
