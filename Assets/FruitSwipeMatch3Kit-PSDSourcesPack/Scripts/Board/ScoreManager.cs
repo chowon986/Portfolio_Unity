@@ -9,11 +9,13 @@ public class ScoreManager : MonoBehaviour
     public Text scoreText;
     public int score;
     public Image scoreBar;
+    private int length;
 
     // Start is called before the first frame update
     void Start()
     {
         board = FindObjectOfType<Board>();
+        length = board.scoreGoals.Length;
     }
 
     // Update is called once per frame
@@ -27,8 +29,12 @@ public class ScoreManager : MonoBehaviour
         score += amountToIncrease;
         if(board != null && scoreBar != null)
         {
-            int length = board.scoreGoals.Length;
             scoreBar.fillAmount = (float)score / (float)board.scoreGoals[length - 1];
+        }
+
+        if(score > board.scoreGoals[length - 1])
+        {
+            Debug.Log("GameOver");
         }
     }
 }
