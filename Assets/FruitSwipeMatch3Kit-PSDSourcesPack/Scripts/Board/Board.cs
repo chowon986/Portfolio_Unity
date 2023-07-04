@@ -32,21 +32,24 @@ public class Board : MonoBehaviour
     public int width;
     public int height;
     public int offSet;
+    public int basePieceValue = 20;
+    public int[] scoreGoals;
+    public float refillDelay = 0.5f;
     public GameObject tilePrefab;
     public GameObject breakableTilePrefab;
     public GameState currentState = GameState.move;
     public GameObject[] dots;
     public GameObject destroyEffect;
-    public TileType[] boardLayout;
     public GameObject[,] allDots;
+    public TileType[] boardLayout;
     public Dot currentDot;
-    public int basePieceValue = 20;
-    public float refillDelay = 0.5f;
+
     private bool[,] blankSpaces;
+    private int streakValue = 1;
     private FindMatches findeMatches;
     private BackgroundTile[,] breakableTile;
     private ScoreManager scoreManager;
-    private int streakValue = 1;
+    private SoundManager soundManager;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +59,7 @@ public class Board : MonoBehaviour
         blankSpaces = new bool[width, height];
         breakableTile = new BackgroundTile[width, height];
         scoreManager = FindObjectOfType<ScoreManager>();
+        soundManager = FindObjectOfType<SoundManager>();
         Setup();
     }
 
@@ -295,6 +299,12 @@ public class Board : MonoBehaviour
                 {
                     breakableTile[column, row] = null;
                 }
+            }
+
+            // Does the sound manager exist?
+            if(soundManager != null)
+            {
+                soundManager.PlayRandomDestroyNoise();
             }
 
             GameObject particle = Instantiate(destroyEffect, allDots[column, row].transform.position, Quaternion.identity);
