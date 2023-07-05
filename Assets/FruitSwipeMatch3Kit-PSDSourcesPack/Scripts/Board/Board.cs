@@ -192,13 +192,16 @@ public class Board : MonoBehaviour
             foreach (GameObject currentPiece in findeMatches.currentMatches)
             {
                 Dot dot = currentPiece.GetComponent<Dot>();
-                if (dot.row == firstPiece.row)
+                if (dot != null)
                 {
-                    numberHorizontal++;
-                }
-                if (dot.column == firstPiece.column)
-                {
-                    numberVertical++;
+                    if (dot.row == firstPiece.row)
+                    {
+                        numberHorizontal++;
+                    }
+                    if (dot.column == firstPiece.column)
+                    {
+                        numberVertical++;
+                    }
                 }
             }
         }

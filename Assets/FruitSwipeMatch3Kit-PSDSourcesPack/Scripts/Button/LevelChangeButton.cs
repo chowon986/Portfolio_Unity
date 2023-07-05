@@ -9,9 +9,12 @@ public class LevelChangeButton : Button
 {
     public int CurLevel;
     public Animator panelAnim;
+    public Canvas clearCanvas;
 
     public override void ClickButton()
     {
+        base.ClickButton();
+
         if (tag == "InGame")
         {
             if(panelAnim != null)
@@ -26,12 +29,24 @@ public class LevelChangeButton : Button
 
     private void Update()
     {
-        AnimatorStateInfo stateInfo = panelAnim.GetCurrentAnimatorStateInfo(0);
-        if(stateInfo.IsName("Panel Fade out"))
+        if (panelAnim != null)
         {
-            if(stateInfo.normalizedTime >= 1.0f)
+            AnimatorStateInfo stateInfo = panelAnim.GetCurrentAnimatorStateInfo(0);
+
+            if (stateInfo.IsName("Panel Fade out"))
             {
-                SceneManager.LoadScene("InGameScene" + CurLevel);
+                if (stateInfo.normalizedTime >= 1.0f)
+                {
+                    string sceneName = SceneManager.GetActiveScene().name;
+
+                    if (sceneName == "InGameScene1")
+                    {
+                        SceneManager.LoadScene("Scene" + CurLevel);
+                    }
+
+                    else
+                        SceneManager.LoadScene("InGameScene" + CurLevel);
+                }
             }
         }
     }

@@ -1812,6 +1812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37bd00df866a1a449ab710e435207e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingSoundButton: {fileID: 0}
   button: {fileID: 1006047560}
   isMute: 0
 --- !u!114 &481502293
@@ -2055,6 +2056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16cd3b61686a0647a471dda9718addb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingSoundButton: {fileID: 0}
   musicToggleButton: {fileID: 0}
   soundToggleButton: {fileID: 0}
   musicButton: {fileID: 0}
@@ -2880,6 +2882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37bd00df866a1a449ab710e435207e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingSoundButton: {fileID: 0}
   button: {fileID: 734237113}
   isMute: 0
 --- !u!1 &749550007
@@ -3642,6 +3645,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039b983b1e53559468293dfe7981c0ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingSoundButton: {fileID: 0}
+  CurLevel: 0
+  panelAnim: {fileID: 0}
+  clearCanvas: {fileID: 0}
 --- !u!1 &877842448
 GameObject:
   m_ObjectHideFlags: 0
@@ -3788,6 +3795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37bd00df866a1a449ab710e435207e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingSoundButton: {fileID: 0}
   button: {fileID: 1926057726}
   isMute: 0
 --- !u!1 &893979707
@@ -3842,6 +3850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2a52ea69ecec24a813cea9d17800db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingSoundButton: {fileID: 0}
   canvas: {fileID: 1522133846}
   musicToggleButton: {fileID: 734237113}
   soundToggleButton: {fileID: 1926057726}
@@ -4285,6 +4294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37bd00df866a1a449ab710e435207e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingSoundButton: {fileID: 0}
   button: {fileID: 1006047560}
   isMute: 0
 --- !u!1 &1033326458
@@ -5137,6 +5147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37bd00df866a1a449ab710e435207e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingSoundButton: {fileID: 0}
   button: {fileID: 1773383271}
   isMute: 0
 --- !u!114 &1211607089
@@ -5883,6 +5894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16cd3b61686a0647a471dda9718addb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingSoundButton: {fileID: 0}
   musicToggleButton: {fileID: 734237113}
   soundToggleButton: {fileID: 1926057726}
   musicButton: {fileID: 1006047560}
@@ -6329,6 +6341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37bd00df866a1a449ab710e435207e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingSoundButton: {fileID: 0}
   button: {fileID: 734237113}
   isMute: 0
 --- !u!1 &1522133843
@@ -6987,6 +7000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb7b07f1eb8c21647a550e359d63b05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingSoundButton: {fileID: 0}
   musicToggleButton: {fileID: 734237113}
   soundToggleButton: {fileID: 1926057726}
   musicButton: {fileID: 1006047560}
@@ -7242,6 +7256,151 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1626173143
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1626173146}
+  - component: {fileID: 1626173145}
+  - component: {fileID: 1626173144}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1626173144
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626173143}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: cdadcfa64dd78104e84d4e19748e551b, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1626173145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626173143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a0c7c94d78a7bc42b96c87041f902e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 1626173144}
+  clickClip: {fileID: 8300000, guid: 05354cc958ad4fa47936e88282645e29, type: 3}
+  crashClip: {fileID: 8300000, guid: 63dd55e0dfe69e94e862effb948ae82e, type: 3}
+  explosionParticlePrefab: {fileID: 2630815748524575241, guid: cb7cd9b0c56a24d49a40784bd3203ae6, type: 3}
+--- !u!4 &1626173146
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626173143}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1646308718
 GameObject:
   m_ObjectHideFlags: 0
@@ -8300,6 +8459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37bd00df866a1a449ab710e435207e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingSoundButton: {fileID: 0}
   button: {fileID: 1773383271}
   isMute: 0
 --- !u!1 &1790349016
@@ -13942,6 +14102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37bd00df866a1a449ab710e435207e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingSoundButton: {fileID: 0}
   button: {fileID: 1926057726}
   isMute: 0
 --- !u!1 &1937338432

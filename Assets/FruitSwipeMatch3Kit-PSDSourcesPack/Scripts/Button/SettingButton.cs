@@ -11,6 +11,12 @@ public class SettingButton : ResetButton
 
     public override void ClickButton()
     {
+        if (settingSoundButton != null)
+        {
+            if (settingSoundButton.isMute == false)
+                SelectLevelSceneManager.Instance.audioSource.PlayOneShot(SelectLevelSceneManager.Instance.clickClip);
+        }
+
         button.gameObject.SetActive(isOn);
         isOn = !isOn;
 

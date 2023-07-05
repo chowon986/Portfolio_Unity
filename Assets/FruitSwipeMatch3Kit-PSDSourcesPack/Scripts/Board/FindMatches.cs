@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Unity.VisualScripting;
+using System.Data.Common;
 
 public class FindMatches : MonoBehaviour
 {
@@ -198,7 +199,9 @@ public class FindMatches : MonoBehaviour
                 }
 
                 dots.Add(board.allDots[column, i]);
-                dot.isMatched = true;
+
+                if (dot != null)
+                    dot.isMatched = true;
             }
         }
 
@@ -236,7 +239,7 @@ public class FindMatches : MonoBehaviour
         for (int i = 0; i < board.width; i++)
         {
             if (board.allDots[i, row] != null)
-            {
+            { 
                 Dot dot = board.allDots[i, row].GetComponent<Dot>();
 
                 if (dot != null)
@@ -247,7 +250,9 @@ public class FindMatches : MonoBehaviour
                     }
                 }
                 dots.Add(board.allDots[i, row]);
-                dot.isMatched = true;
+
+                if(dot != null)
+                    dot.isMatched = true;
             }
         }
 

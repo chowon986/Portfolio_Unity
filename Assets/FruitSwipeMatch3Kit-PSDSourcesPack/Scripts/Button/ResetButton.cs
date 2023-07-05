@@ -11,6 +11,8 @@ public class ResetButton : Button
 
     public override void ClickButton()
     {
+        base.ClickButton();
+
         if (musicToggleButton != null &&
             soundToggleButton != null &&
             musicButton != null &&

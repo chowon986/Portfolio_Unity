@@ -1868,12 +1868,12 @@ RectTransform:
   m_LocalScale: {x: 1.00032, y: 1.00032, z: 1.00032}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1261053658}
-  - {fileID: 1411285012}
-  - {fileID: 1332294755}
   - {fileID: 1126192381}
   - {fileID: 873818079}
   - {fileID: 170015182}
+  - {fileID: 1261053658}
+  - {fileID: 1411285012}
+  - {fileID: 1332294755}
   m_Father: {fileID: 907547589}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3691,6 +3691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2a52ea69ecec24a813cea9d17800db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingSoundButton: {fileID: 0}
   canvas: {fileID: 876756011}
   musicToggleButton: {fileID: 0}
   soundToggleButton: {fileID: 0}
@@ -5609,6 +5610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaff6d92348530f4f870e9cac7350137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingSoundButton: {fileID: 0}
   canvas: {fileID: 876756011}
   CurLevel: 6
 --- !u!1 &491634066
@@ -5910,6 +5912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaff6d92348530f4f870e9cac7350137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingSoundButton: {fileID: 0}
   canvas: {fileID: 876756011}
   CurLevel: 3
 --- !u!1 &499532218
@@ -8719,8 +8722,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039b983b1e53559468293dfe7981c0ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingSoundButton: {fileID: 0}
   CurLevel: 0
   panelAnim: {fileID: 1219543830}
+  clearCanvas: {fileID: 0}
 --- !u!114 &720552849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10170,6 +10175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaff6d92348530f4f870e9cac7350137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingSoundButton: {fileID: 0}
   canvas: {fileID: 876756011}
   CurLevel: 5
 --- !u!1 &830623334
@@ -15545,6 +15551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaff6d92348530f4f870e9cac7350137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingSoundButton: {fileID: 0}
   canvas: {fileID: 941764541}
   CurLevel: 1
 --- !u!1 &1182140837
@@ -18116,7 +18123,7 @@ GameObject:
   m_Layer: 5
   m_Name: LevelMap
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -21765,6 +21772,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaff6d92348530f4f870e9cac7350137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingSoundButton: {fileID: 0}
   canvas: {fileID: 876756011}
   CurLevel: 2
 --- !u!1 &1593235577
@@ -22047,6 +22055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2a52ea69ecec24a813cea9d17800db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingSoundButton: {fileID: 0}
   canvas: {fileID: 941764541}
   musicToggleButton: {fileID: 0}
   soundToggleButton: {fileID: 0}
@@ -22676,6 +22685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaff6d92348530f4f870e9cac7350137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingSoundButton: {fileID: 0}
   canvas: {fileID: 876756011}
   CurLevel: 4
 --- !u!1 &1646208623
@@ -26411,6 +26421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaff6d92348530f4f870e9cac7350137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingSoundButton: {fileID: 0}
   canvas: {fileID: 876756011}
   CurLevel: 7
 --- !u!1 &1929677714

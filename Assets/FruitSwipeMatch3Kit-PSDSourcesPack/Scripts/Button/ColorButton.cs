@@ -10,6 +10,7 @@ public class ColorButton : Button
 
     public override void ClickButton()
     {
+        base.ClickButton();
         foreach (Transform child in canvas.transform)
         {
             if (child.name == "TextPink_CurLevel")
